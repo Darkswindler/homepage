@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>BlueNet交通大平台</title>
+    <link rel="stylesheet" href="/style/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style/home/home.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="/js/home/home.js"></script>
+</head>
+
+<body>
+    <div>
+        <div id="photo" class="row no-gutters position-relative bg-black justify-content-center">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active fa fa-circle-thin"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1" class="fa fa-circle-thin"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2" class="fa fa-circle-thin"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="photo-rwd">
+                        <img src="/images/home/home.png">
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="photo-rwd">
+                        <img src="/images/home/home.png">
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="photo-rwd">
+                        <img src="/images/home/home.png">
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div id="bluenet" class="h-10v position-absolute d-flex align-items-end">
+                <img src="/images/home/bluenet.png" class="h-100">
+                <span class="font-weight-bold">BlueNet 交通大平台</span>
+            </div>
+            <div id="introduction" class="w-100 position-absolute d-flex flex-column justify-content-center align-items-center">
+                <span id="text-1">BlueNet 是一個整合個人及社群交通移動的非營利服務平台，讓您從出門到達目的一路順暢。</span>
+                <span id="text-2">我們是國立台北科技大學多媒體系統研究室，希望為您帶來全新的乘車體驗。</span>
+            </div>
+        </div>
+        <div id="service" class="row no-gutters flex-column justify-content-center align-items-center">
+            <div class="h-10 w-100 m-3 row no-gutters justify-content-center align-items-end">
+                <span class="font-weight-bold text-larger">最安全的計程車叫車服務</span>
+            </div>
+            <div class="h-30 w-90 m-3 row no-gutters justify-content-around align-items-center">
+                <div class="col-3 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center">
+                            <img src="/images/home/callTaxi.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">叫計程車</span>
+                            <span class="text-muted text-smaller">您可以即時或預約叫車，選擇距離近、評價好、車況佳的計程車。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center">
+                            <img src="/images/home/friendGuard.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">好友守護</span>
+                            <span class="text-muted text-smaller">透過計程車路徑即時追蹤，讓好友家人守護您，達到安全滿分。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center">
+                            <img src="/images/home/hitchhikeOrder.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">搭乘司機的順風車</span>
+                            <span class="text-muted text-smaller">搭乘司機大哥的順風車，節省車資。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-30 w-90 m-3 row no-gutters justify-content-around align-items-center">
+                <div class="col-3 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center">
+                            <img src="/images/home/price.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">中長程比價</span>
+                            <span class="text-muted text-smaller">藉由司機報價，選擇合意的計程車。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center">
+                            <img src="/images/home/shared.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">計程車共乘</span>
+                            <span class="text-muted text-smaller">目前分為機場、高鐵、公司、園區、景點及不分區，隨時可上線登記共乘需求、參與。他人發起的共乘、聯繫其他乘車者。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center">
+                            <img src="/images/home/voice.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">免費語音電話</span>
+                            <span class="text-muted text-smaller">全球首創免費語音電話，溝通司機零誤差。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-30 w-90 m-3 row no-gutters justify-content-around align-items-center">
+                <div class="col-3 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center">
+                            <img src="/images/home/heart.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">愛心叫車</span>
+                            <span class="text-muted text-smaller">提供身障、醫檢、無障礙輪椅、愛心送餐、戶外散心、盲胞接送服務。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center">
+                            <img src="/images/home/customized.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">客製服務叫車</span>
+                            <span class="text-muted text-smaller">提供代駕、載寵物、包車、旅遊、汽車接電、搬家、送貨、代買、接送小孩服務。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center">
+                            <img src="/images/home/position.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">追蹤司機位置</span>
+                            <span class="text-muted text-smaller">透過計程車路徑即時追蹤司機，隨時掌握行車軌跡。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="service-pad" class="row no-gutters flex-column justify-content-center align-items-center">
+            <div class="h-10 w-100 m-3 row no-gutters justify-content-center align-items-end">
+                <span class="font-weight-bold text-larger">最安全的計程車叫車服務</span>
+            </div>
+            <div class="h-30 w-90 m-3 row no-gutters justify-content-around align-items-center">
+                <div class="col-4 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center ml-3">
+                            <img src="/images/home/callTaxi.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">叫計程車</span>
+                            <span class="text-muted text-larger">您可以即時或預約叫車，選擇距離近、評價好、車況佳的計程車。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center ml-3">
+                            <img src="/images/home/friendGuard.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">好友守護</span>
+                            <span class="text-muted text-larger">透過計程車路徑即時追蹤，讓好友家人守護您，達到安全滿分。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center ml-3">
+                            <img src="/images/home/hitchhikeOrder.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">搭乘司機的順風車</span>
+                            <span class="text-muted text-larger">搭乘司機大哥的順風車，節省車資。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-30 w-90 m-3 row no-gutters justify-content-around align-items-center">
+                <div class="col-4 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center ml-3">
+                            <img src="/images/home/price.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">中長程比價</span>
+                            <span class="text-muted text-larger">藉由司機報價，選擇合意的計程車。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center ml-3">
+                            <img src="/images/home/shared.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold" >計程車共乘</span>
+                            <span class="text-muted text-larger">目前分為機場、高鐵、公司、園區、景點及不分區，隨時可上線登記共乘需求、參與。他人發起的共乘、聯繫其他乘車者。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center ml-3">
+                            <img src="/images/home/voice.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">免費語音電話</span>
+                            <span class="text-muted text-larger">全球首創免費語音電話，溝通司機零誤差。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-30 w-90 m-3 row no-gutters justify-content-around align-items-center">
+                <div class="col-4 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center ml-3">
+                            <img src="/images/home/heart.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">愛心叫車</span>
+                            <span class="text-muted text-larger">提供身障、醫檢、無障礙輪椅、愛心送餐、戶外散心、盲胞接送服務。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center ml-3">
+                            <img src="/images/home/customized.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">客製服務叫車</span>
+                            <span class="text-muted text-larger">提供代駕、載寵物、包車、旅遊、汽車接電、搬家、送貨、代買、接送小孩服務。</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 no-gutters">
+                    <div class="row no-gutters justify-content-between align-items-center">
+                        <div class="col-md-4 col-lg-4 col-xl-3 no-gutters d-flex align-items-center ml-3">
+                            <img src="/images/home/position.png" class="w-100">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-8 no-gutters d-flex flex-column">
+                            <span class="font-weight-bold">追蹤司機位置</span>
+                            <span class="text-muted text-larger">透過計程車路徑即時追蹤司機，隨時掌握行車軌跡。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="service-rwd" class="row no-gutters flex-column justify-content-center align-items-center">
+            <div id="service-rwd-inside" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators my-3" style="bottom: 0;">
+                    <li data-target="#service-rwd-inside" data-slide-to="0" class="active fa fa-circle-thin"></li>
+                    <li data-target="#service-rwd-inside" data-slide-to="1" class="fa fa-circle-thin"></li>
+                    <li data-target="#service-rwd-inside" data-slide-to="2" class="fa fa-circle-thin"></li>
+                </ol>
+                <div class="h-10 w-100 mt-1 row no-gutters justify-content-center align-items-end">
+                    <span class="font-weight-bold text-larger">最安全的計程車叫車服務</span>
+                </div>
+                <div class="carousel-inner" style="height: 400px">
+                    <div class="carousel-item active">
+                        <div class="h-30 m-1 row no-gutters flex-column justify-content-around align-items-center">
+                            <div class="col-12 no-gutters p-3">
+                                <div class="row no-gutters justify-content-between align-items-center">
+                                    <div class="col-3 no-gutters d-flex align-items-center">
+                                        <img src="/images/home/callTaxi.png" class="w-100">
+                                    </div>
+                                    <div class="col-8 no-gutters d-flex flex-column">
+                                        <span class="font-weight-bold">叫計程車</span>
+                                        <span class="text-muted text-smaller">您可以即時或預約叫車，選擇距離近、評價好、車況佳的計程車。</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 no-gutters p-3">
+                                <div class="row no-gutters justify-content-between align-items-center">
+                                    <div class="col-3 no-gutters d-flex align-items-center">
+                                        <img src="/images/home/friendGuard.png" class="w-100">
+                                    </div>
+                                    <div class="col-8 no-gutters d-flex flex-column">
+                                        <span class="font-weight-bold">好友守護</span>
+                                        <span class="text-muted text-smaller">透過計程車路徑即時追蹤，讓好友家人守護您，達到安全滿分。</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 no-gutters p-3">
+                                <div class="row no-gutters justify-content-between align-items-center">
+                                    <div class="col-3 no-gutters d-flex align-items-center">
+                                        <img src="/images/home/hitchhikeOrder.png" class="w-100">
+                                    </div>
+                                    <div class="col-8 no-gutters d-flex flex-column">
+                                        <span class="font-weight-bold">搭乘司機的順風車</span>
+                                        <span class="text-muted text-smaller">搭乘司機大哥的順風車，節省車資。</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="h-30 m-3 row no-gutters flex-column justify-content-around align-items-center">
+                            <div class="col-12 no-gutters p-3">
+                                <div class="row no-gutters justify-content-between align-items-center">
+                                    <div class="col-3 no-gutters d-flex align-items-center">
+                                        <img src="/images/home/price.png" class="w-100">
+                                    </div>
+                                    <div class="col-8 no-gutters d-flex flex-column">
+                                        <span class="font-weight-bold">中長程比價</span>
+                                        <span class="text-muted text-smaller">藉由司機報價，選擇合意的計程車。</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 no-gutters p-3">
+                                <div class="row no-gutters justify-content-between align-items-center">
+                                    <div class="col-3 no-gutters d-flex align-items-center">
+                                        <img src="/images/home/shared.png" class="w-100">
+                                    </div>
+                                    <div class="col-8 no-gutters d-flex flex-column">
+                                        <span class="font-weight-bold">計程車共乘</span>
+                                        <span class="text-muted text-smaller">目前分為機場、高鐵、公司、園區、景點及不分區，隨時可上線登記共乘需求、參與。他人發起的共乘、聯繫其他乘車者。</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 no-gutters p-3">
+                                <div class="row no-gutters justify-content-between align-items-center">
+                                    <div class="col-3 no-gutters d-flex align-items-center">
+                                        <img src="/images/home/voice.png" class="w-100">
+                                    </div>
+                                    <div class="col-8 no-gutters d-flex flex-column">
+                                        <span class="font-weight-bold">免費語音電話</span>
+                                        <span class="text-muted text-smaller">全球首創免費語音電話，溝通司機零誤差。</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="h-30 m-3 row no-gutters flex-column justify-content-around align-items-center">
+                            <div class="col-12 no-gutters p-3">
+                                <div class="row no-gutters justify-content-between align-items-center">
+                                    <div class="col-3 no-gutters d-flex align-items-center">
+                                        <img src="/images/home/heart.png" class="w-100">
+                                    </div>
+                                    <div class="col-8 no-gutters d-flex flex-column">
+                                        <span class="font-weight-bold">愛心叫車</span>
+                                        <span class="text-muted text-smaller">提供身障、醫檢、無障礙輪椅、愛心送餐、戶外散心、盲胞接送服務。</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 no-gutters p-3">
+                                <div class="row no-gutters justify-content-between align-items-center">
+                                    <div class="col-3 no-gutters d-flex align-items-center">
+                                        <img src="/images/home/customized.png" class="w-100">
+                                    </div>
+                                    <div class="col-8 no-gutters d-flex flex-column">
+                                        <span class="font-weight-bold">客製服務叫車</span>
+                                        <span class="text-muted text-smaller">提供代駕、載寵物、包車、旅遊、汽車接電、搬家、送貨、代買、接送小孩服務。</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 no-gutters p-3">
+                                <div class="row no-gutters justify-content-between align-items-center">
+                                    <div class="col-3 no-gutters d-flex align-items-center">
+                                        <img src="/images/home/position.png" class="w-100">
+                                    </div>
+                                    <div class="col-8 no-gutters d-flex flex-column">
+                                        <span class="font-weight-bold">追蹤司機位置</span>
+                                        <span class="text-muted text-smaller">透過計程車路徑即時追蹤司機，隨時掌握行車軌跡。</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="masstransfit">
+            <div class="row no-gutters flex-row bg-gradient-bw" style="display: flex;">
+                <div class="w-50 align-items-end position-relative" style="display: flex;">
+                    <img src="/images/home/screen7.png" class="col-8">
+                    <div id="linecircle" class="row position-absolute" style="top: 40%; right: -13.5%; z-index: 1;">
+                        <div>
+                            <div class="w-auto">
+                                <span>結合捷運、Ubike等大眾交通工具</span>
+                            </div>
+                            <div class="w-auto border border-white"></div>
+                        </div>
+                        <div class="mt-2 justify-content-center align-items-center rounded-circle" style="height: 50px; width: 50px; background-color: rgba(255,255,255,0.5);display: flex;">
+                            <div class="rounded-circle" style="height: 30px; width: 30px; background-color: rgba(255,255,255,0.7);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-50 align-items-center position-relative" style="display: flex;">
+                    <img src="/images/home/screen.png" class="col-10">
+                    <div class="row position-absolute" style="top: 50% ;left: 42%">
+                        <div class="mt-2 justify-content-center align-items-center rounded-circle" style="height: 50px; width: 50px; background-color: rgba(255,255,255,0.5);display: flex;">
+                            <div class="rounded-circle" style="height: 30px; width: 30px; background-color: rgba(255,255,255,0.7);"></div>
+                        </div>
+                        <div>
+                            <div class="w-auto">
+                                <span style=" white-space:nowrap;">即時聯繫司機乘車位置與時間</span>
+                            </div>
+                            <div class="w-auto border border-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="masstransfit-pad">
+            <div class="row no-gutters flex-row bg-gradient-bw" style="display: flex;">
+                <div class="w-50 align-items-end position-relative col-8 pt-1" style="display: flex;">
+                    <img src="/images/home/screen7.png" class="col-8">
+                    <div class="row position-absolute" style="top: 40%; left: 55%; z-index: 1;">
+                        <div>
+                            <div class="w-auto">
+                                <span style=" white-space:nowrap;font-size: 150%">結合捷運、Ubike等大眾交通工具</span>
+                            </div>
+                            <div class="w-auto border border-white"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-50 align-items-end position-relative col-8" style="display: flex;">
+                    <img src="/images/home/screen.png" class="col-10">
+                    <div class="row position-absolute" style="top: 40% ;left: 55%">
+                        <div>
+                            <div class="w-auto">
+                                <span style=" white-space:nowrap;font-size: 150%">即時聯繫司機乘車位置與時間</span>
+                            </div>
+                            <div class="w-auto border border-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="masstransfit-rwd">
+            <div class="row no-gutters flex-row bg-gradient-bw" style="display: flex;">
+                <div class="w-50 align-items-end position-relative col-8 pt-1" style="display: flex;">
+                    <img src="/images/home/screen7.png" class="col-8">
+                    <div class="row position-absolute" style="top: 40%; left: 50%; z-index: 1;">
+                        <div>
+                            <div class="w-auto">
+                                <span style=" white-space:nowrap">結合捷運、Ubike等大眾交通工具</span>
+                            </div>
+                            <div class="w-auto border border-white"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-50 align-items-end position-relative col-8" style="display: flex;">
+                    <img src="/images/home/screen.png" class="col-10">
+                    <div class="row position-absolute" style="top: 30% ;left: 55%">
+                        <div>
+                            <div class="w-auto">
+                                <span style=" white-space:nowrap;">即時聯繫司機乘車位置與時間</span>
+                            </div>
+                            <div class="w-auto border border-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pt-3 row no-gutters" style="background-color: rgb(33,33,33)">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 no-gutters d-flex align-items-end">
+                <img src="/images/home/screen2.png" class="col-12">
+            </div>
+            <div id="dot-rwd" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 no-gutters d-flex flex-column justify-content-center align-items-center pt-2 pb-3">
+                <span class="text-white text-larger">最在地化的大眾運輸服務</span>
+                <div class="m-3"></div>
+                <span class="text-white text-smaller">台北捷運、高雄捷運、機場捷運</span>
+                <div id="margin" class="m-5"></div>
+                <div id="margin-rwd" class="m-3"></div>
+                <div>
+                    <span class="text-white"><i  class="fas fa-circle mr-5"></i>站點搜尋 / 最近站點搜尋</span>
+                    <br>
+                    <span class="text-white"><i class="fas fa-circle mr-5"></i>路線搜尋</span>
+                    <br>
+                    <span class="text-white"><i class="fas fa-circle mr-5"></i>最愛站點設置</span>
+                    <br>
+                    <span class="text-white"><i class="fas fa-circle mr-5"></i>車站資訊搜尋</span>
+                    <br>
+                    <span class="text-white"><i class="fas fa-circle mr-5"></i>交通轉乘資訊搜尋</span>
+                    <br>
+                    <span class="text-white"><i class="fas fa-circle mr-5"></i>到站時間顯示</span>
+                    <br>
+                    <span class="text-white"><i class="fas fa-circle mr-5"></i>日系捷運路線圖</span>
+                </div>
+            </div>
+        </div>
+        <div id="bus" class="p-3 row no-gutters">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 d-flex justify-content-center align-items-center">
+                <img src="/images/home/screen3.png" class="col-12 p-3">
+            </div>
+            <div class="p-3 col-xl-8 col-lg-8 col-md-8 col-sm-6 col-6">
+                <div class="m-3 row no-gutters justify-content-center align-items-end">
+                    <span style="font-size: auto">公車</span>
+                    <img src="/images/home/bus.png" class="col-4">
+                </div>
+                <div class="m-3 h-70" style="background-color: rgb(234,234,234);border-radius: 1rem 1rem 1rem 1rem;">
+                    <div class="h-33 p-3 row no-gutters justify-content-center align-items-center">
+                        <img src="/images/home/bus_search.png" class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                    </div>
+                    <div class="h-33 p-3 row no-gutters justify-content-start align-items-center">
+                        <img src="/images/home/bus_time.png" class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                    </div>
+                    <div class="h-33 p-3 row no-gutters justify-content-end align-items-center">
+                        <img src="/images/home/bus_favorite.png" class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bus-rwd" class="row no-gutters">
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 d-flex justify-content-center align-items-center">
+                <img src="/images/home/screen3.png" class="col-12">
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-6">
+                <div class="m-3 row no-gutters justify-content-end align-items-end">
+                    <span style="font-size: auto">公車</span>
+                    <img src="/images/home/bus.png" class="col-4">
+                </div>
+                <div class="m-3 h-70" style="background-color: rgb(234,234,234);border-radius: 1rem 1rem 1rem 1rem;">
+                    <div class="h-33 p-1 row no-gutters justify-content-center align-items-center">
+                        <img src="/images/home/bus_search.png" class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
+                    </div>
+                    <div class="h-33 p-1 row no-gutters justify-content-start align-items-center">
+                        <img src="/images/home/bus_time.png" class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
+                    </div>
+                    <div class="h-33 p-1 row no-gutters justify-content-end align-items-center">
+                        <img src="/images/home/bus_favorite.png" class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="hsr" class="p-3 row no-gutters flex-column">
+            <div class="m-3 row no-gutters justify-content-center align-items-end">
+                <span style="font-size: auto">高鐵&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <img src="/images/home/hsr.png" class="col-2">
+            </div>
+            <div class="m-3 row no-gutters">
+                <div class="col-4 row justify-content-center align-items-center">
+                    <img src="/images/home/hsr_time.png" class="col-8">
+                    <img src="/images/home/hsr_stop.png" class="col-8">
+                </div>
+                <div class="col-4 d-flex justify-content-center align-items-center">
+                    <img src="/images/home/screen4.png" class="col-12 p-3">
+                </div>
+                <div class="col-4 d-flex align-items-center">
+                    <img src="/images/home/hsr_line.png" class="col-8">
+                </div>
+            </div>
+        </div>
+        <div id="hsr-rwd" class="row no-gutters flex-column">
+            <div class="m-3 row no-gutters justify-content-end align-items-end">
+                <span style="font-size: auto">高鐵&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <img src="/images/home/hsr.png" class="col-2">
+            </div>
+            <div class="row no-gutters">
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <img src="/images/home/screen4.png" class="col-12">
+                </div>
+                <div class="col-6 row justify-content-center align-items-center">
+                    <img src="/images/home/hsr_time.png" class="col-12 pb-3 pl-4 pr-0">
+                    <img src="/images/home/hsr_stop.png" class="col-12 pb-3 pl-4 pr-0">
+                    <img src="/images/home/hsr_line.png" class="col-12 pb-3 pl-4 pr-0">
+                </div>
+            </div>
+        </div>
+        <div id="bike" class="p-3 row no-gutters">
+            <div class="p-3 col-8">
+                <div class="m-3 row no-gutters justify-content-center align-items-end">
+                    <span style="font-size: auto">公共自行車</span>
+                    <img src="/images/home/Ubike.png" class="col-4">
+                </div>
+                <div class="m-3 h-70" style="background-color: rgb(234,234,234);border-radius: 1rem 1rem 1rem 1rem;">
+                    <div class="h-33 p-3 row no-gutters justify-content-center align-items-center">
+                        <img src="/images/home/ubike_line.png" class="col-4">
+                    </div>
+                    <div class="h-33 p-3 row no-gutters justify-content-start align-items-center">
+                        <img src="/images/home/ubike_stop.png" class="col-4">
+                    </div>
+                    <div class="h-33 p-3 row no-gutters justify-content-end align-items-center">
+                        <img src="/images/home/ubike_bike.png" class="col-4">
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 d-flex justify-content-center align-items-center">
+                <img src="/images/home/screen5.png" class="col-12 p-3">
+            </div>
+        </div>
+        <div id="bike-rwd" class="pt-3 row no-gutters">
+            <div class="col-6 d-flex justify-content-center align-items-center">
+                <img src="/images/home/screen5.png" class="col-12 p-3">
+            </div>
+            <div class="col-6">
+                <div class="m-3 row no-gutters justify-content-end align-items-end">
+                    <span style="font-size: auto">公共自行車</span>
+                    <img src="/images/home/Ubike.png" class="col-4">
+                </div>
+                <div class="m-3 h-70" style="background-color: rgb(234,234,234);border-radius: 1rem 1rem 1rem 1rem;">
+                    <div class="h-33 row no-gutters justify-content-center align-items-center">
+                        <img src="/images/home/ubike_line.png" class="col-12">
+                    </div>
+                    <div class="h-33 row no-gutters justify-content-start align-items-center">
+                        <img src="/images/home/ubike_stop.png" class="col-12">
+                    </div>
+                    <div class="h-33 row no-gutters justify-content-end align-items-center">
+                        <img src="/images/home/ubike_bike.png" class="col-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="link" class="row no-gutters justify-content-around" style="background-color: rgb(234,234,234);">
+            <div id="download" class="col-3 mt-5">
+                <div class="row no-gutters justify-content-center">
+                    <span>APP 下載連結</span>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img src="/images/home/ios.png" class="col-6" onclick="ios()">
+                    <img src="/images/home/android.png" class="col-6" onclick="android()">
+                    <img src="/images/home/android_driver.png" class="col-6" onclick="android_driver()">
+                </div>
+            </div>
+            <div id="social" class="col-3 mt-5">
+                <div class="row no-gutters justify-content-center m-3">
+                    <span>Facebook 粉絲團</span>
+                </div>
+                <div class="row no-gutters justify-content-center m-3">
+                    <span>Line 官方帳號</span>
+                </div>
+                <div class="row no-gutters justify-content-center m-3">
+                    <div class="col-4 d-flex flex-column no-gutters justify-content-center align-items-center p-1" onclick="facebook()">
+                        <img src="/images/home/facebook.png" class="w-50">
+                    </div>
+                    <div class="col-4 d-flex flex-column no-gutters justify-content-center align-items-center p-1" onclick="line()">
+                        <img src="/images/home/line.png" class="w-50">
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <img src="/images/home/screen6.png" class="col-10 p-3">
+            </div>
+        </div>
+        <div id="link-rwd" class="row no-gutters justify-content-around mt-2" style="background-color: rgb(234,234,234);">
+            <div id="download" class="col-12 mt-3">
+                <div class="row no-gutters justify-content-center">
+                    <span>APP 下載連結</span>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img src="/images/home/ios.png" class="col-8" onclick="ios()">
+                    <img src="/images/home/android.png" class="col-8" onclick="android()">
+                    <img src="/images/home/android_driver.png" class="col-8" onclick="android_driver()">
+                </div>
+            </div>
+            <div id="social" class="col-12 mt-3">
+                <div class="row no-gutters justify-content-center m-3">
+                    <span>Facebook 粉絲團</span>
+                </div>
+                <div class="row no-gutters justify-content-center m-3">
+                    <span>Line 官方帳號</span>
+                </div>
+                <div class="row no-gutters justify-content-center m-3">
+                    <div class="col-4 d-flex flex-column no-gutters justify-content-center align-items-center p-1" onclick="facebook()">
+                        <img src="/images/home/facebook.png" class="w-50">
+                    </div>
+                    <div class="col-4 d-flex flex-column no-gutters justify-content-center align-items-center p-1" onclick="line()">
+                        <img src="/images/home/line.png" class="w-50">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <img src="/images/home/screen6.png" class="col-10 p-3">
+            </div>
+        </div>
+        <div id="link-pad" class="row no-gutters justify-content-around" style="background-color: rgb(234,234,234);">
+            <div id="download" class="col-6 mt-3">
+                <div class="row no-gutters justify-content-center">
+                    <span>APP 下載連結</span>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img src="/images/home/ios.png" class="col-8" onclick="ios()">
+                    <img src="/images/home/android.png" class="col-8" onclick="android()">
+                    <img src="/images/home/android_driver.png" class="col-8" onclick="android_driver()">
+                </div>
+            </div>
+            <div id="social" class="col-6 mt-3">
+                <div class="row no-gutters justify-content-center m-3">
+                    <span>Facebook 粉絲團</span>
+                </div>
+                <div class="row no-gutters justify-content-center m-3">
+                    <span>Line 官方帳號</span>
+                </div>
+                <div class="row no-gutters justify-content-center m-3">
+                    <div class="col-4 d-flex flex-column no-gutters justify-content-center align-items-center p-1" onclick="facebook()">
+                        <img src="/images/home/facebook.png" class="w-50">
+                    </div>
+                    <div class="col-4 d-flex flex-column no-gutters justify-content-center align-items-center p-1" onclick="line()">
+                        <img src="/images/home/line.png" class="w-50">
+                    </div>
+                </div>
+            </div>
+            <div id="picture" class="col-12">
+                <img src="/images/home/screen6.png" class="col-10 p-3">
+            </div>
+            <div id="picture-pad" class="col-10">
+                <img src="/images/home/screen6.png" class="col-10 p-3">
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="my-3 h-20 w-100 d-flex no-gutters justify-content-center align-items-center">
+                <span>最近加入的藍寶們</span>
+            </div>
+            <div class="h-80 w-100 d-flex no-gutters">
+                <div class="h-100 w-80">
+                </div>
+                <div id="cubee" class="h-100 w-20">
+                    <img src="/images/home/cubee.png" class="col-12">
+                </div>
+                <div id="cubee-rwd" class="h-500 w-40">
+                    <img src="/images/home/cubee.png" class="col-12">
+                </div>
+            </div>
+        </div>
+        <div class="row no-gutters justify-content-center align-items-center" style="background-color: rgb(124,208,203);">
+            <div class="row m-3 w-100 no-gutters d-flex justify-content-center align-items-center">
+                <span class="text-white">Cubee 新聞報報</span>
+            </div>
+            <div id="youtube" class="row m-3 w-100 no-gutters justify-content-center align-items-center">
+                <!-- <video class="col-6" controls>
+                    <source src="mov_bbb.mp4" type="video/mp4">
+                </video> -->
+                <iframe id="video" class="col-6" src="https://www.youtube.com/embed?listType=playlist&list=PLo4UxQv-uo_puVmYdesoUFUeuHnO1oocL">
+                </iframe>
+            </div>
+            <div id="youtube-rwd" class="row m-3 w-100 no-gutters justify-content-center align-items-center">
+                <!-- <video class="col-6" controls>
+                    <source src="mov_bbb.mp4" type="video/mp4">
+                </video> -->
+                <iframe id="video-rwd" class="col-10" src="https://www.youtube.com/embed?listType=playlist&list=PLo4UxQv-uo_puVmYdesoUFUeuHnO1oocL">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

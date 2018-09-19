@@ -1,0 +1,26 @@
+@import mixin
+
+@for $i from 1 through 100
+    .h-#{$i}v
+        height: $i * 1vh
+
+    .w-#{$i}v
+        width: $i * 1vw
+
+    .h-#{$i}
+        height: $i * 1%
+
+    .w-#{$i}
+        width: $i * 1%
+
+.text-smaller
+    font-size: smaller
+
+.text-larger
+    font-size: larger
+
+.bg-black
+    background-color: black
+
+.bg-gradient-bw
+    background: linear-gradient(rgba(0,0,0,0.2), white)

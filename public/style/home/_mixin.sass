@@ -1,0 +1,19 @@
+$pc-media: 1200px
+$pcs-media: 1199px
+$pad-media: 992px
+$pads-media: 991px
+$phone-media: 768px
+$phones-media: 767px
+
+=pc-width
+	@media all and (min-width: $pc-media)
+		@content
+=pad-width
+	@media all and (min-width:$pad-media) and (max-width: $pcs-media)
+		@content
+=mall-pad-width
+	@media all and (min-width: $phone-media) and (max-width:$pads-media)
+		@content
+=phone-width
+	@media all and (max-width: $phones-media)
+		@content
