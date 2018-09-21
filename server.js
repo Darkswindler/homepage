@@ -141,6 +141,31 @@ app.post('/userVerify', (req, res) => {
         })
 
 });
+app.get('/getuserlist', (req, res) => {
+
+    request.post("https://api-dev.bluenet-ride.com/v2_0/GetUserList", {
+            headers: {
+                'Content-Type': ' application/json'
+            },
+            json: {
+                "guestKey": "cf074507-71da-4d3a-aafe-42edf5d4b7b7"
+            }
+        },
+        (error, response, body) => {
+            console.log("driverData-response-statusCode", response.statusCode);
+            if (error) {
+                console.log('Error while sending message' + error);
+                return;
+            }
+            if (response.statusCode !== 200) {
+                console.log('Error status code while sending message' + body.errMsgs);
+                return;
+            }
+            console.log('Send registerPost succeeded');
+            res.send(body);
+        })
+
+});
 
 // BN user signin
 app.post('/userSignin', (req, res) => {

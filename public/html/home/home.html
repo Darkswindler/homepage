@@ -16,7 +16,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="/js/home/home.js"></script>
 </head>
 
 <body>
@@ -729,20 +728,28 @@
                 <img src="/images/home/screen6.png" class="col-10 p-3">
             </div>
         </div>
-        <div class="row no-gutters">
+        <div id="bluebaby"class="row no-gutters">
             <div class="my-3 h-20 w-100 d-flex no-gutters justify-content-center align-items-center">
                 <span>最近加入的藍寶們</span>
             </div>
-            <div class="h-80 w-100 d-flex no-gutters">
-                <div class="h-100 w-80">
-                </div>
-                <div id="cubee" class="h-100 w-20">
-                    <img src="/images/home/cubee.png" class="col-12">
-                </div>
-                <div id="cubee-rwd" class="h-500 w-40">
-                    <img src="/images/home/cubee.png" class="col-12">
-                </div>
+            <div id="bluebabyitem"class="h-80 w-80 no-gutters row">
+                <div v-for="(item, index) in list" class="col-xl-1 col-lg-1 col-md-2 col-sm-4 col-3">
+                    <img v-if="index<17":src="item.userPhoto" id="userphoto">
             </div>
+            </div>
+            <div id="bluebabyitem-rwd"class="h-80 w-100 no-gutters row pl-4">
+                <div v-for="(item, index) in list" class="col-3">
+                    <img v-if="index<17":src="item.userPhoto" id="userphoto">
+            </div>
+            </div>
+            <div id="cubee" class="h-100 w-20 col-xl-2 col-lg-2 col-md-2">
+                    <img src="/images/home/cubee.png" class="col-12">
+                </div>
+                <div id="cubee-rwd">
+                    <div class="col-12 d-flex justify-content-center">
+                    <img src="/images/home/cubee.png" class="h-30 col-8">
+                </div>
+                </div>
         </div>
         <div class="row no-gutters justify-content-center align-items-center" style="background-color: rgb(124,208,203);">
             <div class="row m-3 w-100 no-gutters d-flex justify-content-center align-items-center">
@@ -764,6 +771,7 @@
             </div>
         </div>
     </div>
+        <script src="/js/home/home.js"></script>
 </body>
 
 </html>

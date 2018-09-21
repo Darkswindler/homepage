@@ -1,3 +1,28 @@
+new Vue({
+    el: '#bluebaby',
+    data() {
+        return  {
+                    list: ""
+                }
+    },
+    mounted() {
+        axios
+            .get('/getuserlist')
+            .then(data => {
+                this.list = data.data.list;
+                console.log(this.list);
+            })
+            // .then(() => {
+            //     $("#loading").css('display', 'none');
+            // })
+    },
+    methods: {
+        go: (driverID) => {
+            window.location.href = ("https://dev-driverweb.herokuapp.com/html/driverinformation.html" + "?id=" + driverID);
+            // window.location.href = ("http://localhost:8080/html/driverinformation.html" + "?id=" + driverID);
+        }
+    }
+});
 $(document).ready(function() {
 
     // initialize
